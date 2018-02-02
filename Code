@@ -1,0 +1,25 @@
+# shourt_URL
+import random
+from random import choice
+import csv
+import string
+import sys
+
+URLs=sys.argv
+URLs.pop(0)
+
+myBitly =dict()
+def genURL(size=6,Options=[string.digits+string.ascii_uppercase+string.ascii_lowercase]):
+    while True:
+        sURL =''.join([choice(Options[0])for n in range(size)])
+        if sURL not in myBitly.values():
+            #print('Your password in '+sURL)
+            break
+    return sURL
+
+for s in URLs:
+    if s not in myBitly.keys():
+        print(s)
+        myBitly[s]=genURL()
+
+print(myBitly)
